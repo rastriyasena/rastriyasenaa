@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastriyasena</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<div class="overlay">
+
+    <!-- ✅ Header with Responsive Nav -->
+    <header>
+      <div class="logo-title">
+        <img src="image/logo.jpeg" alt="RashtriySena Logo">
+        <strong>RastriySena</strong>
+      </div>
+
+      <!-- Checkbox for hamburger -->
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+      <!-- Nav Links -->
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="https://yourbooksite.com" target="_blank">Book</a>
+        <a href="https://x.com/rastriyasenaa__" target="_blank">X</a>
+        <a href="https://www.instagram.com/rastriyasenaa__" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/share/1CT7zJ2sgs/" target="_blank">Facebook</a>
+      </nav>
+    </header>
+
+    <!-- ✅ Home Section -->
+    <section id="home" class="section">
+      <h2>Welcome to RastriySena</h2>
+      <p>
+        Those who insult or abuse our great leaders <br>
+        our team takes strict legal action against them and also compels them to apologize publicly. <br><br>
+        In our team, both boys and girls work shoulder to shoulder.
+        We stand united to fight for social justice, equality, and respect.
+        If you believe in our mission and want to walk on the path of truth and justice, <br>
+        then fill out the registration form below and become a part of our team. <br>
+        You are welcome!
+      </p>
+    </section>
+
+    <!-- ✅ Background Image Section -->
+    <div class="bg-logo"></div>
+
+    <!-- ✅ Registration Form -->
+      
+        
+<section id="register" class="section">
+  <h2>Join RastriySena</h2>
+  <form id="registerForm">
+    <input type="text" name="name" placeholder="Your Full Name" required>
+    <input type="email" name="email" placeholder="Email Address" required 
+      pattern="[a-zA-Z0-9._%+-]+@gmail\.com" 
+      title="Please enter a valid Gmail address (example@gmail.com)">
+    <input type="text" name="phone" placeholder="Phone Number" 
+  required maxlength="10" 
+  pattern="^[6-9]\d{9}$" 
+  title="Enter a valid 10-digit phone number starting with 6, 7, 8, or 9">
+
+    <input type="text" name="city" placeholder="City" required>
+<input type="text" name="transfer_id" placeholder="Transfer no/Ref id" required minlength="8">
+
+    <button type="submit">Register</button>
+  </form>
+
+  <div id="thankYou" class="thankyou-msg" style="display:none;">
+    <p>Aapka form successfully submit ho gaya hai.</p>
+    <p>Hamari team jald hi aapse sampark karegi.</p>
+    <p><strong>Note:</strong> Hamari team aapse aapka Aadhaar card maangegi.</p>
+  </div>
+</section>
+
+<script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxJLG8CYeY5fzaX4NkH-koWdAmKe88WCym0wIZPD6IsUZrDriCOF5BDluow6vEn7tWQ-A/exec"; // yaha apna Apps Script URL daalo
+  const form = document.getElementById("registerForm");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    fetch(scriptURL, {
+      method: "POST",
+      body: new FormData(form)
+    })
+    .then(response => {
+      form.style.display = "none";
+      document.getElementById("thankYou").style.display = "block";
+    })
+    .catch(error => console.error('Error!', error.message));
+  });
+</script>
+
+
+<section>
+
+
+  
+  <!-- Thank You message -->
+  <div id="thankYou" class="thankyou-msg">
+    <p>Aapka form successfully submit ho gaya hai.</p>
+        <p>Hamari team jald hi aapse sampark karegi.  </p>
+          <p><strong>Note:</strong> Hamari team aap se aapka addhar card malti ha jion hone ke liye .</p>
+  
+  </div>
+</section>
+
+
+    <div class="qr">
+      <!-- Apna QR code image yaha lagao -->
+      <img src="image/Qr code.jpg" alt="QR Code">
+    </div>
+    <div class="text">
+      We are dedicated to helping poor and needy people. Even a small act of kindness can change lives. Together, we can create hope, dignity, and a brighter future
+    </div>
+
+    <!-- ✅ About Section -->
+    <section id="about" class="section">
+      <h2>About RastriySena</h2>
+      <p>
+        "RastriySena" is a youth organization working towards building a society based on justice, equality, and dignity. <br><br>
+        Our primary goal is to follow the path shown by Baba Saheb Dr. B. R. Ambedkar, ensuring that every citizen gets their constitutional rights and human dignity. <br><br>
+        We believe that an educated, organized, and aware society can bring true change.
+        As Baba Saheb rightly said: <br><br>
+        "Educate, Agitate, Organize." <br><br>
+        These three principles form the foundation of our work. <br><br>
+        Our organization spreads the messages of our great leaders and takes action—both legal and social—against those who insult them.
+        We empower the youth by giving them a platform to stand up for social change.
+      </p>
+    </section>
+
+  </div>
+
+  </body>
+</html>

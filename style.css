@@ -1,0 +1,234 @@
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: url('images/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      padding-bottom: 50px;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0);
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-title img {
+      height: 50px;
+    }
+
+    .logo-title strong {
+      font-size: 24px;
+      margin-left: 10px;
+    }
+
+    /* Hamburger Menu Checkbox */
+    #menu-toggle {
+      display: none;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: red;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 770px) {
+      .menu-icon {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.95);
+        position: absolute;
+        top: 70px;
+        right: 30px;
+        padding: 15px;
+        border-radius: 8px;
+        width: 200px;
+      }
+
+      #menu-toggle:checked + label + nav {
+        display: flex;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+    }
+
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+      margin: 20px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .section h2 {
+      margin-bottom: 20px;
+      color: #ff4444;
+    }
+
+    .section p {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+      color: #eee;
+    }
+
+    .bg-logo {
+      background-image: url("image/bg.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      height: 600px;
+      margin: 20px 0;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      border-radius: 5px;
+      color: #000;
+    }
+
+    form button {
+      padding: 10px 20px;
+      background-color: #222;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    form button:hover {
+      background-color: red;
+    }
+
+
+    .qr {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+    .qr img {
+      max-width: 200px;
+      width: 100%;
+      height: auto;
+    }
+    .text {
+      flex: 2;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+    @media (max-width: 768px) {
+      section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .qr {
+        margin-bottom: 20px;
+      }
+    }
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, button {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #1976d2;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background: #1565c0;
+}
+
+/* Thank you message hidden by default */
+.thankyou-msg {
+  display: none;
+  text-align: center;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  background: #787892;
+  color: #2e7d32;
+  border: 10px solid #4caf50;
+  font-weight: bold;
+}
+
+/* Jab URL mein #thankYou aata hai tab dikhana */
+.thankYou:target {
+  display: block;
+}
