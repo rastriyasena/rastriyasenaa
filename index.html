@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rastriyasena</title>
+    <title>RastriySena</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,11 +17,9 @@
         <strong>RastriySena</strong>
       </div>
 
-      <!-- Checkbox for hamburger -->
       <input type="checkbox" id="menu-toggle">
       <label for="menu-toggle" class="menu-icon">&#9776;</label>
 
-      <!-- Nav Links -->
       <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -46,95 +44,95 @@
       </p>
     </section>
 
-    <!-- ✅ Background Image Section -->
     <div class="bg-logo"></div>
 
-    <!-- ✅ Registration Form -->
-      
-        
+    <!-- ✅ First Registration Form -->
 <section id="register" class="section">
   <h2>Join RastriySena</h2>
-  <form id="registerForm">
+
+  <form id="firstForm">
     <input type="text" name="name" placeholder="Your Full Name" required>
     <input type="email" name="email" placeholder="Email Address" required 
       pattern="[a-zA-Z0-9._%+-]+@gmail\.com" 
       title="Please enter a valid Gmail address (example@gmail.com)">
-    <input type="text" name="phone" placeholder="Phone Number" 
-  required maxlength="10" 
-  pattern="^[6-9]\d{9}$" 
-  title="Enter a valid 10-digit phone number starting with 6, 7, 8, or 9">
-
+    <input type="text" name="phone" placeholder="Phone Number" required maxlength="10" pattern="^[6-9]\d{9}$">
     <input type="text" name="city" placeholder="City" required>
-<input type="text" name="transfer_id" placeholder="Transfer no/Ref id" required minlength="8">
+    <button type="submit">Submit</button>
+  </form>
+</section>
 
-    <button type="submit">Register</button>
+
+<!-- ✅ QR & Transfer ID Section (Hidden Until First Submit) -->
+<section id="paymentSection" class="section" style="display:none; text-align:center;">
+  <h2>Scan & Pay</h2>
+  <p>QR code scan करें और payment करें</p>
+  
+  <img src="image/Qr code.jpg" alt="QR Code" style="width:220px; border-radius:10px;">
+
+  <form id="paymentForm" style="margin-top: 20px;">
+      <input type="text" name="transfer_id" placeholder="Enter Transfer / UPI Ref ID" required minlength="8">
+      <button type="submit">Final Submit</button>
   </form>
 
-  <div id="thankYou" class="thankyou-msg" style="display:none;">
-    <p>Aapka form successfully submit ho gaya hai.</p>
+  <div id="finalThankyou" style="display:none;">
+    <p>✅ Registration Completed</p>
     <p>Hamari team jald hi aapse sampark karegi.</p>
-    <p><strong>Note:</strong> Hamari team aapse aapka Aadhaar card maangegi.</p>
   </div>
 </section>
 
+
 <script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbxJLG8CYeY5fzaX4NkH-koWdAmKe88WCym0wIZPD6IsUZrDriCOF5BDluow6vEn7tWQ-A/exec"; // yaha apna Apps Script URL daalo
-  const form = document.getElementById("registerForm");
+const scriptURL = "https://script.google.com/macros/s/AKfycbxJLG8CYeY5fzaX4NkH-koWdAmKe88WCym0wIZPD6IsUZrDriCOF5BDluow6vEn7tWQ-A/exec";
 
-  form.addEventListener("submit", e => {
-    e.preventDefault();
+const firstForm = document.getElementById("firstForm");
+const paymentSection = document.getElementById("paymentSection");
+const paymentForm = document.getElementById("paymentForm");
 
-    fetch(scriptURL, {
-      method: "POST",
-      body: new FormData(form)
-    })
-    .then(response => {
-      form.style.display = "none";
-      document.getElementById("thankYou").style.display = "block";
-    })
-    .catch(error => console.error('Error!', error.message));
+let formData = {};  // temporary store
+
+firstForm.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  formData.name = document.querySelector('input[name="name"]').value;
+  formData.email = document.querySelector('input[name="email"]').value;
+  formData.phone = document.querySelector('input[name="phone"]').value;
+  formData.city = document.querySelector('input[name="city"]').value;
+
+  firstForm.style.display = "none";
+  paymentSection.style.display = "block";
+});
+
+paymentForm.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  formData.transfer_id = document.querySelector('input[name="transfer_id"]').value;
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: new URLSearchParams(formData)
+  }).then(res => {
+    paymentForm.style.display = "none";
+    document.getElementById("finalThankyou").style.display = "block";
   });
+});
 </script>
 
 
-<section>
-
-
-  
-  <!-- Thank You message -->
-  <div id="thankYou" class="thankyou-msg">
-    <p>Aapka form successfully submit ho gaya hai.</p>
-        <p>Hamari team jald hi aapse sampark karegi.  </p>
-          <p><strong>Note:</strong> Hamari team aap se aapka addhar card malti ha jion hone ke liye .</p>
-  
-  </div>
-</section>
-
-
-    <div class="qr">
-      <!-- Apna QR code image yaha lagao -->
-      <img src="image/Qr code.jpg" alt="QR Code">
-    </div>
-    <div class="text">
-      We are dedicated to helping poor and needy people. Even a small act of kindness can change lives. Together, we can create hope, dignity, and a brighter future
-    </div>
-
-    <!-- ✅ About Section -->
-    <section id="about" class="section">
-      <h2>About RastriySena</h2>
-      <p>
-        "RastriySena" is a youth organization working towards building a society based on justice, equality, and dignity. <br><br>
+<!-- ✅ About Section -->
+<section id="about" class="section">
+  <h2>About RastriySena</h2>
+  <p>
+    "RastriySena" is a youth organization working towards building a society based on justice, equality, and dignity. <br><br>
         Our primary goal is to follow the path shown by Baba Saheb Dr. B. R. Ambedkar, ensuring that every citizen gets their constitutional rights and human dignity. <br><br>
         We believe that an educated, organized, and aware society can bring true change.
         As Baba Saheb rightly said: <br><br>
         "Educate, Agitate, Organize." <br><br>
         These three principles form the foundation of our work. <br><br>
         Our organization spreads the messages of our great leaders and takes action—both legal and social—against those who insult them.
-        We empower the youth by giving them a platform to stand up for social change.
-      </p>
-    </section>
+        We empower the youth by giving them a platform to stand up for social change."
+  </p>
+</section>
 
-  </div>
-
-  </body>
+</div>
+</body>
 </html>
