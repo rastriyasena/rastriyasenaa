@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>बहरी सरकार और बेबस आवाम</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: url("bookbg.jpg") no-repeat center center fixed;
+      background-size: cover; /* Full screen cover */
+    }
+
+    .overlay {
+      background: rgba(0,0,0,0.7);
+      min-height: 100%;
+      width: 100%;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      margin-top: 10px;
+      animation: fadeIn 2s;
+      font-size: 2em;
+    }
+
+    .qr-box {
+      margin: 20px auto;
+      padding: 20px;
+      background: rgba(17,17,17,0.9);
+      width: 350px;
+      border-radius: 10px;
+      animation: zoomIn 1.5s;
+      text-align: center;
+    }
+
+    .qr-box img {
+      width: 220px;
+      max-width: 80%;
+      height: auto;
+    }
+
+    .download-box {
+      margin-top: 30px;
+      display: none;
+      animation: fadeIn 2s;
+      text-align: center;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      background: #00c853;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 1em;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #00e676;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes zoomIn {
+      from {transform: scale(0.5);}
+      to {transform: scale(1);}
+    }
+
+    /* Mobile responsive tweaks */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.5em;
+      }
+      .qr-box {
+        width: 90%;
+        padding: 15px;
+      }
+      .qr-box img {
+        width: 180px;
+      }
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="overlay">
+  <h1>📘 बहरी सरकार और बेबस आवाम</h1>
+
+  <!-- QR Scan & Payment -->
+  <div class="qr-box" id="paymentBox">
+    <h3> QR Scan Karo ya pay pr click Kro</h3>
+    <img src="qr.png" alt="UPI QR Code">
+    <p>
+    <button class="btn" onclick="openPayment()">Pay </button>
+    </p>
+  </div>
+
+  <!-- Download Option Only -->
+  <div class="download-box" id="downloadBox">
+    <h2>⬇ Download Book</h2>
+
+    <a href="https://drive.google.com/file/d/1H5Ff0_E5lvg7vWqki7fNioAItRuseDnj/view?usp=drive_link" 
+       target="_blank" 
+       class="btn">
+       📥 Download Book
+    </a>
+  </div>
+</div>
+
+<script>
+  function openPayment() {
+    // Open UPI payment link
+    window.open("upi://pay?pa=6375389891@ybl&pn=Mukesh&am=100", "_blank");
+
+    // Show download button after payment
+    document.getElementById("paymentBox").style.display = "none";
+    document.getElementById("downloadBox").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
